@@ -26,6 +26,7 @@ def genflows():
 	flow_types.append(
 		"announce flow route { match { source " + genipv4() + "/32; destination 192.168.255.10/32; destination-port =" + str(random.randint(1024, 65530)) + "; protocol tcp; } then { rate-limit " + str(random.randint(9600, 51200)) + "; } }")
 	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { discard; } }")
+	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { redirect 666:666; } }")
 	flow_types.append("announce flow route { match { destination " + genipv4() + "/32; } then { discard; } }")
 	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { rate-limit " + str(random.randint(9600, 51200)) + "; } }")
 	return flow_types
