@@ -28,6 +28,11 @@ def genflows():
 	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { discard; } }")
 	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { redirect 666:666; } }")
 	flow_types.append("announce flow route { match { destination " + genipv4() + "/32; } then { discard; } }")
+	flow_types.append("announce flow route { match { source " + genipv4() + "/32; tcp-flags [ urgent rst ]; } then { redirect 666:666; } }")
+	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { redirect 192.168.255.254:666; } }")
+	flow_types.append("announce flow route { match { destination " + genipv4() + "/32; fragment not-a-fragment;} then { discard; } }")
+	flow_types.append("announce flow route { match { source " + genipv4() + "/32; packet-length >200&<500; } then { discard; } }")
+	flow_types.append("announce flow route { match { destination " + genipv4() + "/32; icmp-type [ unreachable echo-request echo-reply ];} then { discard; } }")
 	flow_types.append("announce flow route { match { source " + genipv4() + "/32; } then { rate-limit " + str(random.randint(9600, 51200)) + "; } }")
 	return flow_types
 
