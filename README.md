@@ -6,4 +6,5 @@ A simple python flowspec rule generator for exabgp.
 2. Include this script in your exabgp.conf file.
 
 # ToDo
-1. IPv6 Support
+1. ~IPv6 Support~ Done!
+2. More Customizations
